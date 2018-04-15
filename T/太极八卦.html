@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    body{
+        background:black;
+    }
+    /*外边大的div*/
+    #div{
+        margin: 50px auto;
+        width: 0;
+        height: 500px;
+        /*使用这个 div 的边框来充当太极的 左右 黑白半圆*/
+        border-left: 250px solid black;
+        border-right: 250px solid white;
+        border-radius: 100%;
+        box-shadow: 0 0 20px 20px green;
+        position: relative;
+        animation: mydiv 5s linear infinite;
+    }
+    @keyframes mydiv {
+        0%{
+            transform: rotate(0deg);
+            box-shadow: 0 0 20px 20px green;
+            opacity: 0;
+        }
+        50%{
+            border-left: 250px solid white;
+            border-right: 250px solid black;
+            box-shadow: 0 0 0px 0px yellow;
+            opacity: 1;
+        }
+        100%{
+            transform: rotate(360deg);
+            box-shadow: 0 0 20px 20px red;
+            opacity: 0;
+        }
+    }
+    /*上下半圆公用*/
+    .tb{
+        border-radius: 100%;
+        width: 250px;
+        height: 250px;
+        position: absolute;
+    }
+    /*下半圆*/
+    #t{
+        top: 250px;
+        left: -120px;
+        background:#fff;
+        animation: myt 5s linear infinite;
+    }
+    @keyframes myt {
+        50%{
+            background:black;
+        }
+    }
+    /*上半圆*/
+    #b{
+        top: 0px;
+        left: -120px;
+        background:black;
+        animation: myb 5s linear infinite;
+    }
+    @keyframes myb {
+        50%{
+            background:#fff;
+        }
+    }
+    /*半圆里边的圆的公用*/
+    .ttbb{
+        border-radius: 100%;
+        width: 62px;
+        height: 62px;
+        position: absolute;
+        top: 90px;
+        left: 90px;
+    }
+    /*下班元中的圆*/
+    #tt{
+        background:black;
+        animation: mytt 5s linear infinite;
+    }
+    @keyframes mytt {
+        50%{
+            background:#fff;
+        }
+    }
+    /*上半圆中的圆*/
+    #bb{
+        background:#fff;
+        animation: mybb 5s linear infinite;
+    }
+    @keyframes mybb {
+        50%{
+            background:black;
+        }
+    }
+</style>
+<body>
+
+<div id="div">
+    <div id="t" class="tb">
+        <div id="tt" class="ttbb"></div>
+    </div>
+    <div id="b" class="tb">
+        <div id="bb" class="ttbb"></div>
+    </div>
+</div>
+</body>
+</html>
