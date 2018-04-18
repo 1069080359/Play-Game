@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<title>模拟进度条setInterval()实现</title>
+		<script>
+			var bar=0;//滚动条的初始长度
+			var mytimer=null;
+			function processbar(){
+				if(bar<200){
+					bar++;
+					document.getElementById("processbar1").style.width=bar+"px";
+					//mytimer=setInterval(processbar,500);//加上之后有两个mytimer对象
+					document.getElementById("processbar2").innerHTML=bar;
+				}
+				
+			}
+			
+			function startbar(){
+				mytimer=setInterval(processbar,50);
+			}
+			
+			function pausebar(){
+				
+				clearTimeout(mytimer);
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div style="display:inline-block; width: 200px; height:20px; border: solid 1px blue; padding: 1px;">
+			<div id="processbar1" style="background-color: red; width: 0px; height: 20px;">
+			</div>
+		</div>
+
+		<div id="processbar2" style="display:inline-block; color:green;">
+		</div>
+
+		<form>
+		<input type="button" name="start" value="开始" onclick="startbar()"/>
+		<input type="button" name="pause" value="暂停" onclick="pausebar()"/>
+		</form>
+	</body>
+</html>

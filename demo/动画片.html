@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    header{
+        overflow: hidden;
+    }
+    /*天空*/
+    #sky{
+        width: 100%;
+        height: 450px;
+        background-color:black;
+        position: relative;
+        animation: mysky 45s linear infinite;
+    }
+    @keyframes mysky {
+        0%{
+        background-color:black;
+        }
+        10%{
+        background-color:brown;
+        }
+        20%{
+        background-color:skyblue;
+        }
+        30%{
+        background-color:skyblue;
+        }
+        40%{
+        background-color:skyblue;
+        }
+        50%{
+        background-color:brown;
+        }
+        60%{
+        background-color:black;
+        }
+        100%{
+        background-color:black;
+        }
+    }
+    /*<!--气球-->*/
+    .bal{
+        position: absolute;
+        top: 100px;
+        left: -160px;
+        Z-index: 10;
+        animation: myball 50s linear 1.5s infinite alternate;
+    }
+    @keyframes myball {
+        0%{
+            top: 100px;
+            left: -160px;
+        }
+        10%{
+            top: 80px;
+            left: 0;
+            transform: skew(20deg);
+            transform: scale(0.5);
+        }
+        20%{
+            top: -80px;
+            left: 10%;
+            transform: rotate(-20deg);
+            transform: scale(1);
+        }
+        40%{
+            top: 100px;
+            left: 30%;
+            transform: rotate(0deg);
+            transform: scale(1.5);
+        }
+        60%{
+            top: -70px;
+            left: 50%;
+            transform: rotate(20deg);
+            transform: scale(1);
+        }
+        80%{
+            top: 60px;
+            left: 80%;
+            transform: skew(-20deg);
+            transform: scale(0.5);
+        }
+        100%{
+            top: 80px;
+            left: 100%;
+            transform: rotate(20deg);
+            transform: scale(0);
+        }
+    }
+    /*云彩1*/
+    .cloud1{
+        position: absolute;
+        top: 50px;
+        left: -300px;
+        Z-index: 9;
+        animation: mycloud1 55s linear infinite alternate;
+    }
+    @keyframes mycloud1 {
+        from{
+            transform: translate(0px);
+        }
+        to{
+            transform: translate(600%);
+        }
+    }
+    /*云彩2*/
+    .cloud2{
+        position: absolute;
+        top: 100px;
+        right: 0px;
+        animation: mycloud2 50s linear infinite alternate;
+    }
+    @keyframes mycloud2 {
+        from{
+            transform: translate(-0%);
+        }
+        to{
+            transform: translate(-955%);
+        }
+    }
+    /*云彩3*/
+    .cloud3{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        animation: mycloud3 55s linear infinite alternate;
+    }
+    @keyframes mycloud3 {
+        from{
+            transform: translate(-0%);
+        }
+        to{
+            transform: translate(-1720%);
+        }
+    }
+    /*地上*/
+    #overground{
+        width: 100%;
+        height:250px;
+        position: relative;
+    }
+    /*<!--beans-->*/
+    .beans{
+        position: absolute;
+        top: -190px;
+        right: 600px;
+    }
+    /*卫星接收大平台*/
+    .dowE{
+        position: absolute;
+        top: -120px;
+        right: 780px;
+        Z-index: 8;
+    }
+    /*火箭*/
+    .Glock{
+        position: absolute;
+        top: -180px;
+        right: 698px;
+        Z-index: 7;
+    }
+    /*白色圆环*/
+    .friend{
+        position: absolute;
+        top: -255px;
+        right: 920px;
+        Z-index: 9;
+    }
+    .skyline{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        Z-index: 7;
+    }
+    /*倒碗*/
+    .Plane{
+        position: absolute;
+        top: -150px;
+        right: 245px;
+        Z-index: 8;
+    }
+    /*太阳*/
+    .sun{
+        width: 200px;
+        height: 200px;
+        background-color:#ff6600;
+        border-radius: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin:800px;
+        animation: mysun 45s linear infinite;
+    }
+    /*月亮*/
+    .moon{
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        background-color:#ff0;
+        position: absolute;
+        bottom: 0;
+        right: 0px;
+        transform-origin: -500px;
+        animation: mysun 45s linear infinite;
+    }
+    @keyframes mysun {
+       from{
+           transform: rotate(0deg) scale(0.5);
+       }
+       to{
+           transform: rotate(360deg) scale(1.5);
+       }
+    }
+    /*草地四个*/
+    .lawn1{
+        width: 100%;
+        position: absolute;
+        top: -108px;
+        right: 0px;
+    }
+    .lawn2{
+        position: absolute;
+        top: -48px;
+        right: 0px;
+        Z-index: 9;
+    }
+    .lawn3{
+        position: absolute;
+        top: -46px;
+        left: -112px;
+        Z-index: 9;
+    }
+    .lawn4{
+        position: absolute;
+        top: -64px;
+        left: 600px;
+        Z-index: 8;
+    }
+</style>
+<body>
+<header>
+    <!--天空-->
+    <div id="sky">
+        <!--气球-->
+        <img src="images/balloon.png" alt="" width="150px" height="200px" class="bal"/>
+        <!--云彩-->
+        <div id="cloud">
+            <img src="images/cloudLarge.png" alt="" class="cloud1"/>
+            <img src="images/cloudMedium.png" alt="" class="cloud2"/>
+            <img src="images/cloudSmall.png" alt="" class="cloud3"/>
+        </div>
+    </div>
+    <!--地上-->
+    <div id="overground">
+        <!--beans-->
+        <img src="images/beans.png" alt="" class="beans"/>
+        <!--卫星接收大平台-->
+        <img src="images/dowEventCenter.png" alt="" class="dowE"/>
+        <!--火箭-->
+        <img src="images/Glockenspiel.png" alt="" class="Glock"/>
+        <!--白色圆环-->
+        <img src="images/friendshipShell.png" alt="" class="friend"/>
+        <!--倒碗-->
+        <img src="images/Planetarium.png" alt="" class="Plane"/>
+        <!--楼房-->
+        <img src="images/skyline.png" alt="" class="skyline"/>
+        <!--太阳-->
+        <div class="sun"></div>
+        <!--月亮-->
+        <div class="moon"></div>
+        <!--草地四个-->
+        <img src="images/groundBack.png" alt="" class="lawn1"/>
+        <img src="images/groundFront.png" alt="" class="lawn2"/>
+        <img src="images/groundMid.png" alt="" class="lawn3"/>
+        <img src="images/groundMid.png" alt="" class="lawn4"/>
+    </div>
+</header>
+</body>
+</html>

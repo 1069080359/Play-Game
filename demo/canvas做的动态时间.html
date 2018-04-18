@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #canvas{
+        display: block;
+        margin: 100px auto;
+        border: 1px solid black;
+        background-color: black;
+    }
+</style>
+<body>
+<canvas id="canvas" width="1000"height="300"></canvas>
+<script>
+    function time(){
+        var can=document.getElementById("canvas");
+        var cxt=can.getContext("2d");
+        var date=new Date();//创建时间
+        var hour=date.getHours();//小时
+        var min=date.getMinutes();//分钟
+        min=min<10?"0"+min:min;
+        var second=date.getSeconds();//秒
+        second=second<10?"0"+second:second;
+        //**************清空画布*****
+        cxt.clearRect(0,0,canvas.width,canvas.height);
+        //**************设置字体公共样式*****
+        cxt.font="150px 微软雅黑";//设置字体
+        cxt.lineWidth="3";//设置字体宽
+        //**************小时*****
+        cxt.beginPath();//闭合路径开始
+        //----
+        cxt.fillStyle="red";//实心字体颜色
+        cxt.fillText(hour,200,200);
+        //----
+        cxt.strokeStyle="blue";//镂空字体颜色
+        cxt.strokeText(hour,200,200);//镂空字体
+        cxt.closePath();//闭合路劲结束
+        //**************冒号*****
+        cxt.beginPath();//闭合路径开始
+        //----
+        cxt.fillStyle="green";//实心字体颜色
+        cxt.fillText(":",380,190);
+        //----
+        cxt.strokeStyle="#e3493c";//镂空字体颜色
+        cxt.strokeText(":",380,190);//镂空字体
+        cxt.closePath();//闭合路劲结束
+        //**************分钟*****
+        cxt.beginPath();//闭合路径开始
+        //----
+        cxt.fillStyle="yellow";//实心字体颜色
+        cxt.fillText(min,420,200);
+        //----
+        cxt.strokeStyle="green";//镂空字体颜色
+        cxt.strokeText(min,420,200);//镂空字体
+        cxt.closePath();//闭合路劲结束
+        //**************冒号*****
+        cxt.beginPath();//闭合路径开始
+        //----
+        cxt.fillStyle="green";//实心字体颜色
+        cxt.fillText(":",600,190);
+        //----
+        cxt.strokeStyle="#e3493c";//镂空字体颜色
+        cxt.strokeText(":",600,190);//镂空字体
+        cxt.closePath();//闭合路劲结束
+        //**************秒*****
+        cxt.beginPath();//闭合路径开始
+        //----
+        cxt.fillStyle="blue";//实心字体颜色
+        cxt.fillText(second,640,200);
+        //----
+        cxt.strokeStyle="red";//镂空字体颜色
+        cxt.strokeText(second,640,200);//镂空字体
+        cxt.closePath();//闭合路劲结束
+    }
+    time();
+    setInterval(time,1000);
+</script>
+</body>
+</html>

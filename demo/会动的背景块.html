@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .div0{
+        width: 40px;
+        height: 40px;
+        border: 1px solid cyan;
+        text-align: center;
+        margin: 200px auto;
+        position: relative;
+    }
+    .div2{
+        width: 20px;
+        height: 20px;
+        background: cyan;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation:mydiv2 3s ease infinite;
+    }
+    @keyframes mydiv2 {
+        from{
+            top: 0;
+            left: 0;
+            background: cyan;
+        }
+        25%{
+            top: 0;
+            left: 20px;
+            background: red;
+        }
+        50%{
+            top: 20px;
+            left: 20px;
+            background: yellow;
+        }
+        75%{
+            top: 20px;
+            left: 0;
+            background: green;
+        }
+        100%{
+            top: 0;
+            left: 0;
+            background: cyan;
+        }
+    }
+</style>
+<body>
+    <main>
+        <div class="div0">
+            <b class="b1">又</b>
+            <b class="b2">过</b>
+            <b class="b3">年</b>
+            <b class="b4">呀</b>
+            <div class="div2"></div>
+        </div>
+    </main>
+</body>
+</html>

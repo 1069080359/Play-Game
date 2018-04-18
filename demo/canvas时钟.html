@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #canvas{
+        display: block;
+        margin: 100px auto;
+    }
+</style>
+<body>
+<canvas id="canvas" width="500" height="500"></canvas>
+<script>
+function time(){
+    var canvas=document.getElementById("canvas");
+    var cxt=canvas.getContext("2d");
+    //-------------------------------------------获取时间
+    //new 一个新时间 保存当前时间
+    var date=new Date();
+    //----------------------------------------------小时
+    var hours=date.getHours();
+//    if(hours>12){
+//        hours=hours-12;
+//    }
+    hours>12?hours-12:hours;
+    //---------------------------------------------分钟
+    var minutes=date.getMinutes();
+    //----------------------------------------------秒
+    var seconds=date.getSeconds();
+    //---------------------------------------------清空画布
+    cxt.clearRect(0,0,canvas.width,canvas.height);
+    //--------------------------------------------表盘
+    cxt.beginPath();//闭合路径开始
+    cxt.arc(250,250,240,0,360);//画个圆
+    cxt.strokeStyle="red";//边的颜色
+    cxt.lineWidth=5;//边的宽度
+    cxt.stroke();//绘制
+    cxt.closePath();//闭合路径结束
+    cxt.clip();//-------------------------裁剪图片
+    //-------------------------------------------在表盘的背景图
+    var img=new Image();//首先 NEW 一个 图片对象
+    img.src="img/xly/2.jpg";//给 这个对象 的src 属性 添加 图片路径
+    cxt.drawImage(img,0,10,500,500);//设置图片
+    //-------------------------------------------6度的 刻度
+    for (var i = 0; i < 60; i++) {
+        cxt.save();//叠加情况保存
+        cxt.translate(250,250);//把画布的原点移到圆的原点处
+        cxt.rotate(6*i*Math.PI/180);//每次循环6度
+        cxt.beginPath();//闭合路径开始
+        cxt.fillStyle="#fff";
+        cxt.fillRect(0,-230,5,10);//没循环6  度 创建一次 此方块
+        cxt.closePath();//闭合路径结束
+        cxt.restore();//叠加情况恢复
+    }
+    //------------------------------------------30 度的 刻度
+    for(var i = 0; i < 12; i++){
+        cxt.save();//叠加情况保存
+        cxt.translate(250,250);//把画布的原点移到圆的原点处
+        cxt.rotate(30*i*Math.PI/180);//每次循环30度
+        cxt.beginPath();//闭合路径开始
+        cxt.fillStyle="red";
+        cxt.fillRect(0,-230,5,20);//没循环30  度 创建一次 此方块
+        cxt.closePath();//闭合路径结束
+        cxt.restore();//叠加情况恢复
+    }
+    cxt.lineWidth=3;//粗细
+    //-------------------------------------------时针
+    cxt.save();//叠加情况保存
+    cxt.beginPath();//闭合路径开始
+    cxt.translate(250,250);//把画布的原点移到圆的原点处
+    cxt.rotate((hours+minutes/60)*30*Math.PI/180);//hours 小时数  乘  6度
+    cxt.moveTo(0,0);//起点
+    cxt.lineTo(0,-120);//终点
+    cxt.strokeStyle="green";
+    cxt.stroke();//绘制
+    cxt.closePath();//闭合路径结束
+    cxt.restore();//叠加情况恢复
+    //---------------------------------------分针
+    cxt.save();//叠加情况保存
+    cxt.beginPath();//闭合路径开始
+    cxt.translate(250,250);//把画布的原点移到圆的原点处
+    cxt.rotate(((minutes+seconds/60)*6*Math.PI/180));//minutes 分钟数 换算成秒  乘  6度
+    cxt.moveTo(0,0);//起点
+    cxt.lineTo(0,-160);//终点
+    cxt.strokeStyle="red";
+    cxt.stroke();//绘制
+    cxt.closePath();//闭合路径结束
+    cxt.restore();//叠加情况恢复
+    //--------------------------------------秒针
+    cxt.save();//叠加情况保存
+    cxt.translate(250,250);//把画布的原点移到圆的原点处
+    cxt.rotate(seconds*6*Math.PI/180);//seconds 秒数  乘  6度
+    cxt.beginPath();//闭合路径开始
+    cxt.moveTo(0,0);//起点
+    cxt.lineTo(2.5,-200);//终点
+    cxt.closePath();//闭合路径结束
+    cxt.strokeStyle='cyan';//边框颜色
+    cxt.stroke();//绘制
+    cxt.restore();//叠加情况恢复
+    //------------------------------------------表盘圆心
+    cxt.beginPath();//闭合路径开始
+    cxt.arc(250,250,5,0,360);//画个圆
+    cxt.fillStyle="cyan";//填充颜色
+    cxt.fill();//开始填充
+    cxt.stroke();//绘制
+    cxt.closePath();//闭合路径结束
+    //----------------------------------------设置时间字
+    cxt.beginPath();//闭合路径开始
+    cxt.font="26px 微软雅黑";
+    cxt.lineWidth=2;
+    cxt.fillStyle="#fff";
+    hours=date.getHours();//时
+    minutes=date.getMinutes();//分
+    seconds=date.getSeconds();//秒
+    var str=(hours>10?hours:("0"+hours))+":"+(minutes>10?minutes:("0"+minutes))+":"+(seconds>10?seconds:("0"+seconds));
+    cxt.fillText(str,200,400);
+    cxt.closePath();//闭合路径结束
+    //---------------------------------------设置 镂空 字体
+    cxt.beginPath();//闭合路径开始
+    cxt.font="40px 微软雅黑";
+    cxt.lineWidth=2;
+    cxt.strokeStyle="yellow";
+    cxt.strokeText("你好",215,450);
+    cxt.closePath();//闭合路径结束
+}
+time();
+    //--------------------------------------定时器函数
+    setInterval(time,1000);
+</script>
+</body>
+</html>
