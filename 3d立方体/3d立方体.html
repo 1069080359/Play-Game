@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+        background-color:black;
+    }
+    header{
+        margin: 230px auto;
+    }
+    #div1{
+        margin: 100px auto;
+        /*规定元素被查看的位置的视图,加与不加,没看出啥区别 - -!*/
+        perspective:800px;
+    }
+    #div2{
+        width:200px;
+        height:200px;
+        margin: 0px auto;
+        /*给个相对定位,等着里边的6个面以此定位*/
+        position: relative;
+        /*声明此空间为3d空间*/
+        transform-style: preserve-3d;
+        /*旋转舞台呈现立体效果*/
+        /*transform: rotateX(0deg) rotateY(30deg) rotateZ(0deg);*/
+        -webkit-animation:mynameDIV 10s infinite ;
+    }
+    @keyframes mynameDIV {
+        50% {
+            transform: rotateX(30deg) rotateY(30deg) rotateZ(0deg);
+        }
+    }
+    #div2 div{
+        box-shadow: 5px 5px 30px cyan;
+        width: 200px;
+        height: 200px;
+        /*border: 1px solid red;*/
+        color: blue;
+        font-size: 100px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 200px;
+        /*给六个面一个绝对定位*/
+        position:absolute;
+    }
+    /*第一个div面*/
+    #div2 div:nth-of-type(1){
+        /*将其定位到上边*/
+        top:-202px;
+        left:0px;
+        /*固定他的元素变化的起始中心点为下边，这样当旋转他的时候会以下边为中心点旋转*/
+        transform-origin:bottom;
+        /*将其旋转90度变为上盖,旋转本身的X轴,上下移动------------------------------------------------------*/
+        /*transform:rotateX(90deg);*/
+        -webkit-animation:myname1 10s infinite ;
+    }
+    @keyframes myname1 {
+        50% {
+            background: hsla(0, 100%, 50%, 0.7);
+            transform:rotateX(90deg);
+        }
+    }
+    /*第二个div面*/
+    #div2 div:nth-of-type(2){
+        top:0;
+        /*将其定位到左边*/
+        left:-202px;
+        /*固定他的元素变化的起始中心点为右边，这样当旋转他的时候会以右边为中心点旋转*/
+        transform-origin:right;
+        /*将其旋转-90度变为左盖,旋转本身的Y轴,左右移动*/
+        /*transform:rotateY(-90deg);*/
+        -webkit-animation:myname2 10s infinite ;
+    }
+    @keyframes myname2 {
+        50% {
+            background: hsla(60, 100%, 50%, 0.7);
+            transform:rotateY(-90deg);
+        }
+    }
+    /*第三个div面 不变*/
+    #div2 div:nth-of-type(3){
+        top:0px;
+        left:0px;
+        -webkit-animation:myname3 10s infinite ;
+    }
+    @keyframes myname3 {
+        50% {
+            background: hsla(120, 100%, 50%, 0.7);
+        }
+    }
+    /*第四个div面*/
+    #div2 div:nth-of-type(4){
+        top:0px;
+        /*将其定位到右边*/
+        left:202px;
+        /*固定他的元素变化的起始中心点为左边，这样当旋转他的时候会以左边为中心点旋转*/
+        transform-origin:left;
+        /*将其旋转90度变为右盖,旋转本身的Y轴,左右移动*/
+        /*transform:rotateY(90deg);*/
+        -webkit-animation:myname4 10s infinite ;
+    }
+    @keyframes myname4 {
+        50% {
+            background: hsla(180, 100%, 50%, 0.7);
+            transform:rotateY(90deg);
+        }
+    }
+    /*第五个div框*/
+    #div2 div:nth-of-type(5){
+        /*将其定位到下边*/
+        top:202px;
+        left:0px;
+        /*固定他的元素变化的起始中心点为上边，这样当旋转他的时候会以上边为中心点旋转*/
+        transform-origin:top;
+        /*将其旋转-90度变为下盖,旋转本身的X轴,上下移动*/
+        /*transform:rotateX(-90deg);*/
+        -webkit-animation:myname5 10s infinite ;
+    }
+    @keyframes myname5 {
+        50% {
+            background: hsla(240, 100%, 50%, 0.7);
+            transform:rotateX(-90deg);
+        }
+    }
+    /*第六个div框*/
+    #div2 div:nth-of-type(6){
+        top:0px;
+        left:0px;
+        transform-origin:top;
+        /*由于他是背面,原位置是跟第三个框原位,所以只需要向后移动他就好,移动本身的Z轴,前后移动*/
+        /*transform:translateZ(-202px);*/
+        -webkit-animation:myname6 10s infinite ;
+    }
+    @keyframes myname6 {
+        50% {
+            background: hsla(300, 100%, 50%, 0.7);
+            transform:translateZ(-202px);
+        }
+    }
+    /*注释*/
+    .p{
+        color: cyan;
+        font-size: 50px;
+        position:absolute;
+        top: 20px;
+        transform:translateZ(-101px) rotateY(-45deg);
+        -webkit-animation:mynamep 10s infinite ;
+    }
+    @keyframes mynamep {
+        50% {
+            transform:translateZ(-101px) rotateY(180deg);
+        }
+    }
+</style>
+<body>
+<header>
+    <div id="div1">
+        <!--音乐-->
+        <!--audio  播放音频标签-->
+        <!--controls 规定浏览器应该为视频提供播放控件-->
+        <!--controls="controls"  设置是否显示播放的控件属性-->
+        <!--autoplay 自动播放属性-->
+        <!--loop 循环播放属性-->
+        <!--用于视频：video/ogg  video/mp4  video/webm-->
+        <!--用于音频：audio/ogg   audio/mpeg--->
+        <audio autoplay="autoplay" loop="loop">
+            <source src="../2018.01.03-class5%20做动画小项目.html/tiankongzhic.ogg" type="audio/ogg" />
+            <source src="../2018.01.03-class5%20做动画小项目.html/tiankongzhic.mpeg" type="audio/mpeg" />
+            <source src="../2018.01.03-class5%20做动画小项目.html/tiankongzhic.webm" type="audio/webm" />
+            <source src="../2018.01.03-class5%20做动画小项目.html/tiankongzhic.mp3" type="audio/mp3" />
+            你的浏览器不支持audio
+        </audio>
+        <!--立方体-->
+        <div id="div2">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <p class="p">做成3D立方体过程演示动画</p>
+        </div>
+    </div>
+</header>
+</body>
+</html>

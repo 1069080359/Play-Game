@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    header{
+        width: 800px;
+        height: 600px;
+        border: 1px solid aqua;
+        margin: 50px auto;
+        text-align: center;
+        perspective: 1000px;
+    }
+    .div{
+        transform-style: preserve-3d;
+    }
+    .img{
+        transform:rotateX(40deg) rotateY(5deg) rotateZ(-30deg);
+        box-shadow: -10px 10px 15px 0px black;
+        transition: all 2s;
+    }
+    header:hover .img{
+        transform:rotate3d(0,0,0,0deg);
+        box-shadow: -100px 100px 15px 0px #FFFFFF;
+    }
+</style>
+<body>
+<header>
+    <div clas="div">
+        <img src="img.jpg" alt="" width="400px" height="400px" class="img"/>
+    </div>
+</header>
+</body>
+</html>
