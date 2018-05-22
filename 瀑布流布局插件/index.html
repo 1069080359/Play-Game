@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.coolgrid.js"></script>
+<style>
+ul, li {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.items {
+position: relative;
+margin: 0 auto;
+display: block;
+width: 650px;
+}
+.item {
+border: 1px solid #dedede;
+margin: 10px 0;
+}
+.item img {
+display: block;
+width: 180px;
+height: auto;
+padding: 10px;
+}
+</style>
+
+</head>
+<body id='frustration'>
+<div style="margin:20px auto; text-align:center">
+<a href="http://www.100sucai.com/"><img src="http://www.100sucai.com/img/100sucai.png"/></a>
+</div>
+<h1 style="margin-top:150px; text-align: center;">Cool Grid Demo</h1>
+<section>
+<ul class="items">
+<li class="item"><img src="./images/noimage1.png" />
+<div>noimage1</div>
+</li>
+<li class="item"><img src="./images/noimage2.png" />
+<div>noimage2</div>
+</li>
+<li class="item"><img src="./images/noimage3.png" />
+<div>noimage3</div>
+</li>
+<li class="item"><img src="./images/noimage2.png" />
+<div>noimage2</div>
+</li>
+<li class="item"><img src="./images/noimage3.png" />
+<div>noimage3</div>
+</li>
+<li class="item"><img src="./images/noimage1.png" />
+<div>noimage1</div>
+</li>
+<li class="item"><img src="./images/noimage3.png" />
+<div>noimage2</div>
+</li>
+<li class="item"><img src="./images/noimage2.png" />
+<div>noimage3</div>
+</li>
+<li class="item"><img src="./images/noimage1.png" />
+<div>noimage1</div>
+</li>
+<li class="item"><img src="./images/noimage1.png" />
+<div>noimage1</div>
+</li>
+<li class="item"><img src="./images/noimage2.png" />
+<div>noimage2</div>
+</li>
+<li class="item"><img src="./images/noimage3.png" />
+<div>noimage3</div>
+</li>
+<li class="item"><img src="./images/noimage2.png" />
+<div>noimage2</div>
+</li>
+<li class="item"><img src="./images/noimage3.png" />
+<div>noimage3</div>
+</li>
+<li class="item"><img src="./images/noimage1.png" />
+<div>noimage1</div>
+</li>
+<li class="item"><img src="./images/noimage3.png" />
+<div>noimage2</div>
+</li>
+<li class="item"><img src="./images/noimage2.png" />
+<div>noimage3</div>
+</li>
+<li class="item"><img src="./images/noimage1.png" />
+<div>noimage1</div>
+</li>
+</ul>
+</section>
+<script>
+$(window).load(function(){
+  options = {
+    autoResize: true,
+    container: $('.items'),
+    offset: 5,
+    item_width: 210
+  }
+
+  $('.item').CoolGrid(options);
+});
+</script>
+</body>
+</html>
